@@ -1,0 +1,37 @@
+﻿<Window x:Name="frmPrincipal" x:Class="CalculadoraFinanceiraWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalculadoraFinanceiraWPF"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="MainWindow" Height="480" Width="800">
+    <Grid>
+        <Label x:Name="lblTitulo" Margin="6,25,6,345" Height="50" FontFamily="Bodoni MT Black" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Width="780" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="36">Calculadora Financeira</Label>
+        <TextBlock x:Name="txbValorQueDesejaInvestir" Margin="10,90,538,313" Height="20" Width="380">Digite Aqui o Valor Que Deseja Investir:</TextBlock>
+        <TextBox x:Name="txtNumeroMeses" Margin="402,112,10,275" Height="40" Width="380" FontSize="20"></TextBox>
+        <TextBlock x:Name="txbNumeroDeMeses" Margin="402,90,10,310" Width="380" Height="20">Digite Aqui o Número de Meses Que Deseja Investir:</TextBlock>
+        <TextBox x:Name="txtPorcentagemRendaFixa" Margin="402,200,10,180" Width="380" Height="40" FontSize="20"></TextBox>
+        <TextBlock x:Name="txbPorcentagemRendaFixa" Margin="402,165,0,235" Width="380" HorizontalAlignment="Left" Height="20"><Run Text="Digite Aqui a Porcentagem da Renda Fixa:"/></TextBlock>
+        <TextBox x:Name="txtValorInvestir" Margin="10,112,0,279" Width="380" HorizontalAlignment="Left" Height="40" FontSize="20"/>
+        <TextBlock x:Name="txbPorcentagemPoupanca" Margin="10,165,0,235" HorizontalAlignment="Left" Height="20" Width="380"><Run Text="Digite Aqui a Porcentagem da Poupança:"/></TextBlock>
+        <TextBox x:Name="txtPorcentagemPoupanca" Margin="10,200,0,181" Width="380" HorizontalAlignment="Left" Height="40" FontSize="20"></TextBox>
+        <RadioButton x:Name="rbPoupanca" Content="Calcular Poupança" HorizontalAlignment="Left" Margin="630,308,0,0" VerticalAlignment="Top" Checked="RbPoupanca_Checked"/>
+        <RadioButton x:Name="rbRendaFixa" Content="Calcular Renda Fixa" HorizontalAlignment="Left" Margin="630,276,0,0" VerticalAlignment="Top" Width="147" Checked="RbRendaFixa_Checked"/>
+        <Button x:Name="btnCalcular" Content="Calcular Ambos" HorizontalAlignment="Left" Margin="605,348,0,0" VerticalAlignment="Top" Width="173" Height="55" Click="BtnCalcular_Click"/>
+        <Label x:Name="lblResultadoPoupanca" Content="00" HorizontalAlignment="Left" Margin="8,328,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="lblResultadoRendaFixa" Content="00" HorizontalAlignment="Left" Margin="11,394,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <TextBlock x:Name="txbValorRendimentoPoupanca" HorizontalAlignment="Left" Margin="11,297,0,0" TextWrapping="Wrap" Text="Valor Rendimento Poupança" VerticalAlignment="Top" Width="169"/>
+        <TextBlock x:Name="txbRendimentoRendaFixa" HorizontalAlignment="Left" Margin="11,366,0,0" TextWrapping="Wrap" Text="Valor Rendimento Renda Fixa" VerticalAlignment="Top" Width="172"/>
+        <TextBlock x:Name="txbMelhorRendimento" HorizontalAlignment="Left" Margin="424,264,0,0" TextWrapping="Wrap" Text="Melhor Rendimento" VerticalAlignment="Top" Width="130" Height="20"/>
+        <Label x:Name="lblResultadoRendimento" Content="" HorizontalAlignment="Left" Margin="411,283,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="130" Height="30" FontWeight="Bold" Background="{x:Null}" Foreground="#DDE81A1A"/>
+    </Grid>
+</Window>
