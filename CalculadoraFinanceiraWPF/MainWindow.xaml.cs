@@ -39,19 +39,17 @@ namespace CalculadoraFinanceiraWPF
         {
             valorInvestido = double.Parse(txtValorInvestir.Text);
             mesesPeriodo = int.Parse(txtNumeroMeses.Text);
+
             porcentagemInvestidoPoupanca = double.Parse(txtPorcentagemPoupanca.Text);
+            porcentagemInvestidoRendaFixa = double.Parse(txtPorcentagemRendaFixa.Text);
 
             mesPlural = Meses(mesesPeriodo);
+
+            AltararEscrita(valorInvestido, txtNumeroMeses.Text, mesPlural, txtPorcentagemPoupanca.Text, txtPorcentagemRendaFixa.Text);
 
             resultadoPoupanca = Calcular(valorInvestido, porcentagemInvestidoPoupanca, mesesPeriodo);
 
             lblResultadoPoupanca.Content = string.Format("{0} Total numa Aplicação de duração de {1} {2} Investido.", resultadoPoupanca.ToString("c"), mesesPeriodo, mesPlural);
-
-            valorInvestido = double.Parse(txtValorInvestir.Text);
-            mesesPeriodo = int.Parse(txtNumeroMeses.Text);
-            porcentagemInvestidoRendaFixa = double.Parse(txtPorcentagemRendaFixa.Text);
-
-            mesPlural = Meses(mesesPeriodo);
 
             resultadoRendaFixa = Calcular(valorInvestido, porcentagemInvestidoRendaFixa, mesesPeriodo);
 
@@ -168,6 +166,51 @@ namespace CalculadoraFinanceiraWPF
             }
 
             return imposto;
+        }
+
+        private void AltararEscrita(double valor, string meses, string mesMeses, string poupança, string rendaFixa)
+        {
+            if (valor > 0.0)
+            {
+                txtValorInvestir.Text = string.Format("{0}", valor.ToString("c"));
+            }
+
+            if (!string.IsNullOrEmpty(meses) || !string.IsNullOrWhiteSpace(meses))
+            {
+                string ano = Anos(meses, mesMeses);
+                txtNumeroMeses.Text = string.Format("{0} {1} {2}", meses, mesMeses, ano);
+            }
+
+            if (!string.IsNullOrEmpty(poupança) || !string.IsNullOrWhiteSpace(poupança))
+            {
+                txtPorcentagemPoupanca.Text = string.Format("{0}%", poupança);
+            }
+
+            if (!string.IsNullOrEmpty(rendaFixa) || !string.IsNullOrWhiteSpace(rendaFixa))
+            {
+                txtPorcentagemRendaFixa.Text = string.Format("{0}%", rendaFixa);
+            }
+        }
+
+        private string Anos(string meses, string mesesPlural)
+        {
+            int ano = int.Parse(meses) / 12;
+            int mes = int.Parse(meses) % 12;
+
+            if (ano < 1)
+            {
+                return string.Format("");
+            }
+
+            else if (ano == 1)
+            {
+                return string.Format("- ({0} Ano e {1} {2})", ano, mes, mesesPlural);
+            }
+
+            else
+            {
+                return string.Format("- ({0} Anos e {1} {2})", ano, mes, mesesPlural);
+            }
         }
     }
 }
